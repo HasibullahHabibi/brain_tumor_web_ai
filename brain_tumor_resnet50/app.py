@@ -8,9 +8,7 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import preprocess_input
 from pyngrok import ngrok
 
-# =========================
-# CONFIG
-# =========================
+
 MODEL_PATH = "/content/drive/MyDrive/brain_tumor_resnet50.h5"
 IMG_SIZE = (224, 224)
 UPLOAD_FOLDER = "static/uploads"
@@ -18,15 +16,11 @@ PORT = 5000
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# =========================
-# LOAD MODEL
-# =========================
-model = load_model(MODEL_PATH)
-print("✅ Model loaded successfully")
 
-# =========================
-# FLASK APP
-# =========================
+model = load_model(MODEL_PATH)
+print("Model loaded successfully")
+
+
 app = Flask(__name__)
 
 HTML = """
@@ -224,9 +218,7 @@ img{
 """
 
 
-# =========================
-# ROUTE
-# =========================
+
 @app.route("/", methods=["GET", "POST"])
 def predict():
     label = None
@@ -267,14 +259,12 @@ def predict():
         image_path=image_path
     )
 
-# =========================
-# RUN WITH NGROK
-# =========================
 
-# 🔑 PUT YOUR NGROK AUTHTOKEN HERE
+
+
 ngrok.set_auth_token("37hjaAjmNfrjNh3RCCozVZn2jYq_6gipATtnF8PFPRyAnPVfF")
 
 public_url = ngrok.connect(PORT)
-print("🌍 Public URL:", public_url)
+print("Public URL:", public_url)
 
 app.run(port=PORT)
