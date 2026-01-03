@@ -13,5 +13,6 @@ Users can upload brain MRI images and the system predicts whether there is a tum
 
 
 ### Note: The trained model file (`brain_tumor_resnet50.h5`) is **not included** due to GitHub size limits.
-    Here is the colab link
+Here is the colab link
+
     https://drive.google.com/file/d/10xXqJPV8VlXTizxZPc_7-Kut6sj0O4wK/view?usp=drive_link
